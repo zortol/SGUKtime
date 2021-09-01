@@ -40,7 +40,7 @@ function App() {
   }
 
   const getTimeZone = (timezone) => {
-    let date = now.toLocaleString("en-GB", { timeZone: timezone, hour: 'numeric', minute: 'numeric', second: 'numeric', dateStyle: "short" });
+    let date = now.toLocaleString("en-GB", { timeZone: timezone, timeStyle: "short", });
     console.log('Date in ' + timezone + ': ' + date);
     return date
   }
@@ -58,8 +58,24 @@ function App() {
   }, [0])
 
   return (
+    <div className="container">
+              <div className="row my-5 text-center">
+            <div className="col-auto mx-auto">
+              <h4>London</h4>
+              <h5>{getTimeZone("Europe/London")}</h5>
+            </div>
+            <div className="col-auto mx-auto">
+              <h4>Singapore</h4>
+              <h5>{getTimeZone("Asia/Singapore")}</h5>
+            </div>
+          </div>
+                </div>
+      
     <div className="Container">
       <div className="col-6 mx-auto my-5">
+
+
+
         {/* <h6>Current Time in UK is: {CurrentUKTime.toLocaleTimeString()}</h6>
         <h6>Current Time in SG is: {CurrentSGTime.toLocaleTimeString()}</h6> */}
         <form className="row my-3 text-center">
@@ -73,7 +89,7 @@ function App() {
           </div>
         </form>
 
-        <div className="row my-3 text-center">
+        <div className="row my-5 text-center">
           <div className="col">
             <h6>The time in UK would be:</h6>
             <h4>{UKtime}</h4>
@@ -83,28 +99,8 @@ function App() {
             <h4>{SGtime}</h4>
           </div>
         </div>
-        <div className="row my-5 text-center">
-          <div className="col-auto mx-auto">
-            <h6>{getTimeZoneName("Europe/London")}</h6>
-            <h4>{getTimeZone("Europe/London")}</h4>
-          </div>
-          <div className="col-auto mx-auto">
-            <h6>The time in SG would be:</h6>
-            <h4>{getTimeZone("Asia/Singapore")}</h4>
-          </div>
-
-        </div>
       </div>
-
-
-
     </div>
-
-
-
-
-
-
   );
 }
 
