@@ -21,6 +21,16 @@ function App() {
     }
   }
 
+  const checkIfNegativeForSG = (num) => {    // ((hr - Deltatime) % 24).toString() minus first then get negative then modulo and then +24 
+    const minused = (num - Deltatime) % 24;
+    if(minused < 0){
+      return minused + 24;
+    }
+    else{
+      return minused;
+    }
+  }
+
   const UKtoSG = (time) => {  // changes UK time to SG 
     const hr = parseInt(time.slice(0, -3))
     const hrConverted = checkLength(((hr + Deltatime) % 24).toString())
@@ -31,7 +41,7 @@ function App() {
   }
   const SGtoUK = (time) => {  // changes SG time to UK
     const hr = parseInt(time.slice(0, -3))
-    const hrConverted = checkLength(((hr - Deltatime) % 24).toString())
+    const hrConverted = checkLength((checkIfNegativeForSG(hr)).toString())
     const min = (time.slice(3, 6))
     const stringTime = hrConverted + ":" + min
     setUKTime(stringTime)
