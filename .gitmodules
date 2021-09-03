@@ -1,0 +1,3 @@
+[submodule "SGUKtime"]
+	path = SGUKtime
+	url = https://github.com/zortol/SGUKtime.git
