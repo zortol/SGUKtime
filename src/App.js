@@ -65,7 +65,7 @@ function App() {
               <h5>{getTimeZone("Europe/London")}</h5>
             </div>
             <div className="col-auto mx-auto">
-              <h4>Singapore</h4>
+              <h4>Singapore Hello test</h4>
               <h5>{getTimeZone("Asia/Singapore")}</h5>
             </div>
           </div>
