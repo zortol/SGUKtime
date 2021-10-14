@@ -6,7 +6,7 @@ function App() {
   const [now, setNow] = useState(new Date())
   const [SGtime, setSGTime] = useState("--:--")
   const [UKtime, setUKTime] = useState("--:--")
-  const [Deltatime, setDeltaTime] = useState(7)
+  const [Deltatime, setDeltaTime] = useState(8)     // depends on the month but in winter time difference is +8 whereas summer is +7
 
   const [CurrentUKTime, setCurrentUKTime] = useState()
   const [CurrentSGTime, setCurrentSGTime] = useState()
