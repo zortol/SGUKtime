@@ -13,7 +13,7 @@ function App() {
   const [CurrentSGTime, setCurrentSGTime] = useState()
 
   const checkLength = (hr) => {
-    console.log(hr.length)
+    //console.log(hr.length)
     if (hr.length == 1) {
       return "0" + hr
     }
@@ -24,7 +24,7 @@ function App() {
 
   const checkIfNegativeForSG = (num) => {    // ((hr - Deltatime) % 24).toString() minus first then get negative then modulo and then +24 
     const minused = (num - Deltatime) % 24;
-    console.log("This is ", minused)
+    //console.log("This is ", minused)
     if (minused < 0 && Deltatime == 7) {    // when time diff is 7
       return minused + 24;
     }
@@ -38,11 +38,19 @@ function App() {
 
   const UKtoSG = (time) => {  // changes UK time to SG 
     const hr = parseInt(time.slice(0, -3))
-    const hrConverted = checkLength(((hr + Deltatime) % 24).toString())
+    var hrConverted = null
+    if (Deltatime == 7) {
+      hrConverted = checkLength(((hr + Deltatime) % 24).toString())
+    } else {
+      hrConverted = checkLength(((hr + (Deltatime - 1)) % 24).toString())
+    }
+    console.log(hr + Deltatime)
+    console.log((hr + Deltatime) % 24)
     const min = (time.slice(3, 6))
     const stringTime = hrConverted + ":" + min
     setSGTime(stringTime)
     setUKTime("--:--")
+    hrConverted = null
   }
   const SGtoUK = (time) => {  // changes SG time to UK
     const hr = parseInt(time.slice(0, -3))
