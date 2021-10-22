@@ -6,6 +6,7 @@ function App() {
   const [now, setNow] = useState(new Date())
   const [SGtime, setSGTime] = useState("--:--")
   const [UKtime, setUKTime] = useState("--:--")
+
   const [Deltatime, setDeltaTime] = useState(8)     // depends on the month but in winter time difference is +8 whereas summer is +7
 
   const [CurrentUKTime, setCurrentUKTime] = useState()
@@ -23,10 +24,14 @@ function App() {
 
   const checkIfNegativeForSG = (num) => {    // ((hr - Deltatime) % 24).toString() minus first then get negative then modulo and then +24 
     const minused = (num - Deltatime) % 24;
-    if(minused < 0){
+    console.log("This is ", minused)
+    if (minused < 0 && Deltatime == 7) {    // when time diff is 7
       return minused + 24;
     }
-    else{
+    else if (minused < 0 && Deltatime == 8) {
+      return minused + 25;
+    }
+    else {
       return minused;
     }
   }
@@ -50,7 +55,7 @@ function App() {
 
   const getTimeZone = (timezone) => {
     let date = now.toLocaleString("en-GB", { timeZone: timezone, timeStyle: "short", });
-    console.log('Time in ' + timezone + ': ' + date);
+    //console.log('Time in ' + timezone + ': ' + date);
     return date
   }
 
